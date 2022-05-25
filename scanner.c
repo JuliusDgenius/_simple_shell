@@ -55,6 +55,7 @@ struct token_s *create_token(char *str)
 	{
 		return (NULL);
 	}
+
 	memset(tok, 0, sizeof(struct token_s));
 	tok->text_len = strlen(str);
 
@@ -144,6 +145,10 @@ struct token_s *tokenize(struct source_s *src)
 				}
 				endloop = 1;
 				break;
+
+			default:
+				add_to_buf(nc);
+				break;
 		}
 
 		if (endloop)
@@ -166,7 +171,7 @@ struct token_s *tokenize(struct source_s *src)
 	struct token_s *tok = create_token(tok_buf);
 	if (!tok)
 	{
-		fprintf(stderror, "error: failed to alloc buffer: %s\n",
+		fprintf(stderr, "error: failed to alloc buffer: %s\n",
 				strerror(errno));
 		return (&eof_token);
 	}

@@ -11,9 +11,9 @@ struct token_s
 {
 	/* struct source_s - source of input */
 	struct source_s *src;		/* source of input */
-	int text_len;			/* length of token text */
-	char *text;			/* token text */
-}
+	int	text_len;		/* length of token text */
+	char	*text;		/* token text */
+};
 
 /* special token to indicate end of file */
 extern struct token_s eof_token;
